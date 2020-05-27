@@ -10,6 +10,12 @@ app.set('view engine', 'html');
 var mongoose = require('mongoose')
 mongoose.connect("mongodb://localhost:27017/node-blog")
 
+// body parser
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true}))
+
+
 // routes 
 app.get("/", (req, res) => {
    res.render('index');
