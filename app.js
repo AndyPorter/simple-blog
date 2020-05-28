@@ -24,8 +24,11 @@ var Post = mongoose.model('Post', postSchema);
 // ****************
 
 // index page get
+// read blog posts from db
 app.get("/", (req, res) => {
-   res.render('index');
+   Post.find({}, (err, posts) => {
+      res.render('index', { posts: posts})
+   });
 });
 
 // add blog post
